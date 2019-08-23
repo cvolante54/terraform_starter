@@ -1,7 +1,10 @@
 pipeline {
-    agent { dockerfile true }
+    agent {
+      label 'docker'
+    }
     stages {
         stage('Build') {
+            agent { dockerfile true }
             steps {
                 echo "Building ..."
                 sh 'node --version'
@@ -10,7 +13,6 @@ pipeline {
         stage('Test') {
             steps {
                 echo "Testing ..."
-                sh "npm run test"
             }
         }
         stage('Deploy') {
