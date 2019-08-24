@@ -1,10 +1,8 @@
 pipeline {
-    agent {
-      label 'docker'
-    }
+    agent { dockerfile true }
+
     stages {
         stage('Build') {
-            agent { dockerfile true }
             steps {
                 echo "Building ..."
                 sh 'node --version'
